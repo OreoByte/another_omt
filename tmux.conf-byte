@@ -14,9 +14,10 @@ bind -n S-Left previous-window
 bind -n S-Right next-window
 
 # Mouse mode ("allow to click and drag panes around & select panes with the mouse")
-setw -g mouse on
+# NOTE; mode mode may break double click highlight text
+#setw -g mouse on
 
-# Set easier window split keys (ctrl b 
+# Set easier window split keys (ctrl b v OR ctrl b h)
 bind-key v split-window -h
 bind-key h split-window -v
 
@@ -47,3 +48,16 @@ set -g history-limit 5500
 
 # change the copy mode from emacs -> vi ("uncomment if you want it")
 # setw -g mode-keys vi
+
+# -------------------[load/set custom tmux plugins]----------------------------
+# NOTE; (must have direct path to plugin after downloading from github)
+
+#set -g @plugin '/opt/tmux-resurrect'
+# ctrl b ctrl s ("save current tmux session at that state")
+# ctrl b ctrl r ("restore from passed tmux session")
+
+#set -g @plugin '/opt/tmux-logging'
+#run-shell /opt/tmux-logging/logging.tmux
+# ctrl b shift p (loggin everything you type to a file)
+# ctrl b alt p (capture screen "for current pane and only for what text is in view") 
+# ctrl b alt shift p (save complete log history "between all tmux panes and windows")
