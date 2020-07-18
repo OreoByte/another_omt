@@ -39,7 +39,7 @@ setw -g window-status-current-style fg=black,bg=white
 set -ag status-right " #[fg="#34ebe1"]#(/opt/another_omt/thm_vpn)"
 
 #--------------------[Extra options for workflow]------------------------------
-# increase the 
+# increase the total amount of lines that can be scrolled up in copy-mode
 set -g history-limit 5500
 
 # custom prefix "uncomment if you want it" (C "ctrl" // a "a-key")
