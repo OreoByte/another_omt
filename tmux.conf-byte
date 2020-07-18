@@ -1,0 +1,49 @@
+#--------------------[Custom Tmux colors]--------------------------------------
+set -g status-style bg='#44475a',fg='#8be9fd'
+set -g status-interval 1
+
+#--------------------[Easier hotkey switches]----------------------------------
+# use alt-arrow keys to switch panes
+bind -n M-Left select-pane -L
+bind -n M-Right select-pane -R
+bind -n M-Up select-pane -U
+bind -n M-Down select-pane -D
+
+# Shift arrow to switch windows
+bind -n S-Left previous-window
+bind -n S-Right next-window
+
+# Mouse mode ("allow to click and drag panes around & select panes with the mouse")
+setw -g mouse on
+
+# Set easier window split keys (ctrl b 
+bind-key v split-window -h
+bind-key h split-window -v
+
+# hotkey to reload/update tmux config file
+bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded."
+
+#--------------------[dynamic tmux layout]-------------------------------------
+# keep the time and date from the default tmux layout & (custom right size)
+set-option -g status-right-length 140
+set-option -g status-right-style default
+
+# highlight the current selected tmux window
+setw -g window-status-current-style fg=black,bg=white
+
+# auto-change the tmux window by what program is open (uncommnet if you want it)
+#set -g automatic-rename on
+
+# Tab to show if your openvpn tun0 is running or not (echo the line below -> ~/thm_vpn)
+#  if [[ $(ip addr | grep tun0) == '' ]]; then echo "OpenVPN Not Active"; else ip addr show dev tun0 | grep "inet\b" | awk '{print "THM-VPN " $2}'| cut -d/ -f1; fi
+set -ag status-right " #[fg=green]#(/opt/another_omt/thm_vpn)"
+
+#--------------------[Extra options for workflow]------------------------------
+# increase the 
+set -g history-limit 5500
+
+# custom prefix "uncomment if you want it" (C "ctrl" // a "a-key")
+# set -g prefix C-a
+
+# change the copy mode from emacs -> vi ("uncomment if you want it")
+# setw -g mode-keys vi
