@@ -4,7 +4,7 @@
 	cd /opt
 	sudo git clone https://github.com/OreoByte/another_omt.git
 	cd another_omt/
-	chmod +x thm_vpn
+	sudo chmod +x thm_vpn
 	cp /opt/another_omt/tmux.conf-byte ~/.tmux.conf
 
 # testing the tmux script on the next launch of tmux
