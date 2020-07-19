@@ -38,7 +38,7 @@ setw -g window-status-current-style fg=black,bg=white
 # Tab to show if your openvpn tun0 is running or not (echo the line below -> ~/thm_vpn)
 # if [[ $(curl -s -m 2 http://10.10.75.202/whoami 2>/dev/null) == '' ]]; then echo "Broken-VPN-Connection"; else curl -s http://10.10.75.202/whoami | awk '{print "THM-VPN-Connected " $1}'; fi
 # this option is to use the curl command to check true connection and get ip address (NOTE; currently broken outside a EU VPN server")
-#set -ag status-right " #[fg="#ab2fad"]#(/opt/another_omt/curl_thm_vpn)"
+#set -ag status-right " #[fg="#dd99ff"]#(/opt/another_omt/curl_thm_vpn)"
 
 #  if [[ $(ip addr | grep tun0) == '' ]]; then echo "OpenVPN Not Active"; else ip addr show dev tun0 | grep "inet\b" | awk '{print "THM-VPN " $2}'| cut -d/ -f1; fi
 set -ag status-right " #[fg="#34ebe1"]#(/opt/another_omt/thm_vpn)"
