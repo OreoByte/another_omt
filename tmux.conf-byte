@@ -48,6 +48,7 @@ set -g history-limit 5500
 
 # change the copy mode from emacs -> vi ("uncomment if you want it")
 # setw -g mode-keys vi
+# set-option g status-keys vi
 
 # -------------------[load/set custom tmux plugins]----------------------------
 # NOTE; (must have direct path to plugin after downloading from github)
