@@ -1,0 +1,2 @@
+#!/bin/bash
+if [[ $(curl -s -m 2 http://10.10.75.202/whoami 2>/dev/null) == '' ]]; then echo "Broken-VPN-Connection"; else curl -s http://10.10.75.202/whoami | awk '{print "THM-VPN-Connected " $1}'; fi
