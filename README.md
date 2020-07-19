@@ -14,6 +14,9 @@
 	Uncomment the curl connection checker line
 	set -ag status-right " #[fg="#ab2fad"]#(/opt/another_omt/curl_thm_vpn)"
 
+	don't forget to chmod the curl-thm-vpn script
+	chmod +x /opt/another_omt/curl_thm_vpn
+
 # testing the tmux script on the next launch of tmux
 	tmux
 
