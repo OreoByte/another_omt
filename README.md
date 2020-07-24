@@ -25,11 +25,16 @@
 	update tmux script within tmux session
 		:source-file ~/.tmux.conf
 
-# if borked remote or rename the .tmux.conf file
+# If borked remote or rename the .tmux.conf file
 	rm ~/.tmux.conf
 	mv ~/.tmux.conf ~/.tmux.conf.broken
 
-# home install script (for the main file)
+# Loading vpn check script with tmux if .tmux.conf doesn't load them
+	tmux set -ag status-right " #[fg="#dd99ff"]#(~/another_omt/curl_thm_vpn)"
+	OR
+	tmux set -ag status-right " #[fg="#34ebe1"]#(~/another_omt/thm_vpn)"
+
+# Home dir install script (for the main file)
 	#!/bin/bash
 	# also comes with the repo as oreo-setup-script.sh
 	cd ~/
@@ -37,3 +42,4 @@
 	chmod +x ~/another_omt/thm_vpn
 	chmod +x ~/another_omt/curl_thm_vpn
 	cp ~/another_omt/tmux.conf-byte ~/.tmux.conf
+
