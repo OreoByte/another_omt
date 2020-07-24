@@ -1,4 +1,5 @@
 #!/bin/bash
+# will install main config file with more option switches 
 cd ~/
 git clone https://github.com/OreoByte/another_omt.git
 chmod +x ~/another_omt/thm_vpn
