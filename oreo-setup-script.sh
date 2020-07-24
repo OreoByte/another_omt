@@ -1,5 +1,4 @@
 #!/bin/bash
-# run as root or with sudo perms
 cd ~/
 git clone https://github.com/OreoByte/another_omt.git
 chmod +x ~/another_omt/thm_vpn

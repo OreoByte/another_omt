@@ -29,3 +29,11 @@
 	rm ~/.tmux.conf
 	mv ~/.tmux.conf ~/.tmux.conf.broken
 
+# home install script (for the main file)
+	#!/bin/bash
+	# also comes with the repo as oreo-setup-script.sh
+	cd ~/
+	git clone https://github.com/OreoByte/another_omt.git
+	chmod +x ~/another_omt/thm_vpn
+	chmod +x ~/another_omt/curl_thm_vpn
+	cp ~/another_omt/tmux.conf-byte ~/.tmux.conf
