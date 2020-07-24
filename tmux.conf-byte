@@ -1,4 +1,9 @@
 #--------------------[Custom Tmux colors]--------------------------------------
+# add 256 termianl colors and enable them
+set -g default-terminal "screen-256color"
+set-option -ga terminal-overrides ",screen-256color:Tc"
+
+# set status bar color at the bottom of tmux
 set -g status-style bg='#44475a',fg='#8be9fd'
 set -g status-interval 1
 
@@ -9,7 +14,7 @@ bind -n M-Right select-pane -R
 bind -n M-Up select-pane -U
 bind -n M-Down select-pane -D
 
-# Shift arrow to switch windows
+# Shift arrow to switch windows (option for each shift button)
 bind -n S-Left previous-window
 bind -n S-Right next-window
 
