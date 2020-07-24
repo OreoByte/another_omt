@@ -16,10 +16,15 @@ bind -n S-Right next-window
 # Mouse mode ("allow to click and drag panes around & select panes with the mouse")
 # NOTE; mode mode may break double click highlight text
 #setw -g mouse on
+# allow scrolling in mouse mode to not force quit to the end of the pane after copying text
+#unbind -T copy-mode-vi MouseDragEnd1Pane
 
-# Set easier window split keys (ctrl b v OR ctrl b h)
-bind-key v split-window -h
-bind-key h split-window -v
+# Set easier window split keys (ctrl b v OR ctrl b h) Also create new pane with last pane location
+bind-key v split-window -h -c "#{pane_current_path}"
+#bind-key | split-window -h c "#{pane_current_path}"
+
+bind-key h split-window -v -c "#{pane_current_path}"
+#bind-key - split-window -v -c "#{pane_current_path}"
 
 # hotkey to reload/update tmux config file
 bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded."
@@ -43,7 +48,6 @@ setw -g window-status-current-style fg=black,bg=white
 #  if [[ $(ip addr | grep tun0) == '' ]]; then echo "OpenVPN Not Active"; else ip addr show dev tun0 | grep "inet\b" | awk '{print "THM-VPN " $2}'| cut -d/ -f1; fi
 set -ag status-right " #[fg="#34ebe1"]#(/opt/another_omt/thm_vpn)"
 
-
 #--------------------[Extra options for workflow]------------------------------
 # increase the total amount of lines that can be scrolled up in copy-mode
 set -g history-limit 5500
@@ -52,18 +56,31 @@ set -g history-limit 5500
 # set -g prefix C-a
 
 # change the copy mode from emacs -> vi ("uncomment if you want it")
+# copying in vi mode (1 prefix [ // 2 v start-copy-highlight // 3 y save-to-buffer // 4 prefix shift p paste-buffer)
 # setw -g mode-keys vi
 # set-option g status-keys vi
 
-# -------------------[load/set custom tmux plugins]----------------------------
+# copy highlighted text from copy mode to secondary ctrl+v clipboard (copy-mode -> ctrl+spacebar -> highlight y)
+bind-key -T copy-mode y send -X copy-selection-and-cancel\; run "tmux save -|xclip -i -sel clip >/dev/null 2>&1"
+
+# same thing but for mode-keys as vi
+#bind-key -T copy-mode-vi y send -X copy-selection-and-cancel\; run "tmux save -|xclip -i -sel clip >/dev/null 2>&1"
+
+# -------------------[load/set custom tmux plugins]--------------------------------------------------
 # NOTE; (must have direct path to plugin after downloading from github)
 
+# tmux config tmux-resurrect plugin to restore tmux session after reboot (save -> restore)
 #set -g @plugin '/opt/tmux-resurrect'
 # ctrl b ctrl s ("save current tmux session at that state")
 # ctrl b ctrl r ("restore from passed tmux session")
 
+# tmux config for tmux-logging (allow to save a master command history and so on)
 #set -g @plugin '/opt/tmux-logging'
 #run-shell /opt/tmux-logging/logging.tmux
 # ctrl b shift p (loggin everything you type to a file)
 # ctrl b alt p (capture screen "for current pane and only for what text is in view") 
 # ctrl b alt shift p (save complete log history "between all tmux panes and windows")
+
+# tmux config easy copy and paste from tmux buffer -> system clipboard
+#set -g @plugin '/opt/tmux-yank'
+#run-shell '/opt/tmux-yank/yank.tmux'
