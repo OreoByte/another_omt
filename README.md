@@ -34,6 +34,11 @@
 	OR
 	tmux set -ag status-right " #[fg="#34ebe1"]#(~/another_omt/thm_vpn)"
 
+	OR "Older version of tmux doesn't auto load hex-color codes, use color names"
+	set -ag status-right " #[fg="red"]#(~/another_omt/curl_thm_vpn) "
+	set -ag status-right " #[fg="cyan"]#(~/another_omt/thm_vpn) "
+		# Make sure to comment out the other lines with hex-color codes
+
 # Home dir install script (for the main file)
 	#!/bin/bash
 	# also comes with the repo as oreo-setup-script.sh
@@ -42,4 +47,3 @@
 	chmod +x ~/another_omt/thm_vpn
 	chmod +x ~/another_omt/curl_thm_vpn
 	cp ~/another_omt/tmux.conf-byte ~/.tmux.conf
-
