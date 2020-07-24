@@ -1,3 +1,0 @@
-# Basic tmux script with added function that hopeful will work with more than one tmux version #
-# check tmux version ( tmux -V )
-
