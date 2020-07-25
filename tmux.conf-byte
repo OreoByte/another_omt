@@ -52,7 +52,7 @@ set -ag status-right " #[fg="#34ebe1"]#(~/another_omt/thm_vpn) "
 
 # set status-right but for older tmux version "non-hex-colors"
 #set -ag status-right " #[fg="red"]#(~/another_omt/curl_thm_vpn) "
-#set -ag status-right " #[fg="cyan"]#(~/another_omt/thm_vpn) "
+#set -ag status-right " #[fg="green"]#(~/another_omt/thm_vpn) "
 
 #--------------------[Extra options for workflow]------------------------------
 # increase the total amount of lines that can be scrolled up in copy-mode
