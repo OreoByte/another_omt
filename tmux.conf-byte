@@ -60,6 +60,8 @@ set -g history-limit 5500
 
 # custom prefix "uncomment if you want it" (C "ctrl" // a "a-key")
 # set -g prefix C-a
+# use custom prefix with alt instead
+# set -g prefix M-a
 
 # change the copy mode from emacs -> vi ("uncomment if you want it")
 # copying in vi mode (1 prefix [ // 2 v start-copy-highlight // 3 y save-to-buffer // 4 prefix shift p paste-buffer)
