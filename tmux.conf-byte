@@ -7,6 +7,9 @@ set-option -ga terminal-overrides ",screen-256color:Tc"
 set -g status-style bg='#44475a',fg='#8be9fd'
 set -g status-interval 1
 
+# make sure that the status-left has the correct spaces for the text size
+set-option -g status-left-length 15
+
 #--------------------[Easier hotkey switches]----------------------------------
 # use alt-arrow keys to switch panes
 bind -n M-Left select-pane -L
@@ -63,6 +66,9 @@ set -g status-right "#[fg="cyan"]#H#[default] %H:%M %d-%b-%y #[fg="red"]#(~/anot
 #set -g status-right "#[fg="#c299ff"]#H#[default] %H:%M %d-%b-%y #[fg="#dd99ff"]#(~/another_omt/curl_thm_vpn) "
 #set -g status-right "#[fg="#c299ff"]#H#[default] %H:%M %d-%b-%y #[fg="#34ebe1"]#(~/another_omt/thm_vpn) "
 
+# Motivation
+set -g status-left "#[fg="green,bold"]#(echo 'Try Harderer ')"
+
 #--------------------[Extra options for workflow]------------------------------
 # increase the total amount of lines that can be scrolled up in copy-mode
 set -g history-limit 5500
@@ -73,9 +79,15 @@ set -g history-limit 5500
 # set -g prefix M-a
 
 # change the copy mode from emacs -> vi ("uncomment if you want it")
-# copying in vi mode (1 prefix [ // 2 v start-copy-highlight // 3 y save-to-buffer // 4 prefix shift p paste-buffer)
-# setw -g mode-keys vi
-# set-option g status-keys vi
+# 1) ctrl+b+[ copy-mode // 2) spacebar ('start highlight desired text' // 3) enter (copy to buffer) // 4) ctrl+b+] 
+# setw -g mode-keys vi 
+
+# if you would like to make it feel more like normal vi copy commands
+#setw -g mode-keys vi
+#bind P paste-buffer
+#bind-key -T copy-mode-vi v send-keys -X begin-selection
+#bind-key -T copy-mode-vi y send-keys -X rectangle-toggle
+#unbind -T copy-mode-vi Enter
 
 # copy highlighted text from copy mode to secondary ctrl+v clipboard (copy-mode -> ctrl+spacebar -> highlight y)
 bind-key -T copy-mode y send -X copy-selection-and-cancel\; run "tmux save -|xclip -i -sel clip >/dev/null 2>&1"
