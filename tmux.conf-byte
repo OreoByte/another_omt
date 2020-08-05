@@ -66,8 +66,9 @@ set -g status-right "#[fg="cyan,bold"]#H#[default,bold] %H:%M %d-%b-%y #[fg="red
 #set -g status-right "#[fg="#c299ff,bold"]#H#[default,bold] %H:%M %d-%b-%y #[fg="#dd99ff,bold"]#(~/another_omt/curl_thm_vpn) "
 #set -g status-right "#[fg="#c299ff,bold"]#H#[default,bold] %H:%M %d-%b-%y #[fg="#34ebe1,bold"]#(~/another_omt/thm_vpn) "
 
-# Motivation
-set -g status-left "#[fg="green,bold"]#(echo 'Try Harderer ')"
+# Motivation and space for session name
+set-option -g status-left-length 25
+set -g status-left "#[fg="red,bold"]#(echo 'Try Harderer ')#[fg=green,bold]#S "
 
 #--------------------[Extra options for workflow]------------------------------
 # increase the total amount of lines that can be scrolled up in copy-mode
