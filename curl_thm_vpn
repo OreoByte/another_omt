@@ -1,2 +1,4 @@
 #!/bin/bash
 if [[ $(curl -s -m 2 http://10.10.75.202/whoami 2>/dev/null) == '' ]]; then echo "Broken-VPN-Connection"; else curl -s http://10.10.75.202/whoami | awk '{print "THM-VPN-Connected " $1}'; fi
+# if you want elearn_securtiy lab vpn to show or another one
+#if [[ $(ip addr | grep tap0) == '' ]]; then echo "ELearn Not Active"; else ip addr show dev tap0 | grep "inet\b" | awk '{print "ELearn-Tap0 " $2}'| cut -d/ -f1; fi
