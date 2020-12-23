@@ -1,4 +1,4 @@
-#--------------------[Custom Tmux colors]--------------------------------------
+#----------------------------[Custom Tmux colors]--------------------------------------
 # add 256 termianl colors and enable them
 set -g default-terminal "screen-256color"
 set-option -ga terminal-overrides ",screen-256color:Tc"
@@ -10,7 +10,13 @@ set -g status-interval 1
 # make sure that the status-left has the correct spaces for the text size
 set-option -g status-left-length 15
 
-#--------------------[Easier hotkey switches]----------------------------------
+# change the ctrl-b + m "toggle the marked pane" color and size (color of bars when you split "horizontally/vertically")                                                                                                                      
+set -g pane-active-border-style fg=red,bg=default                                                                                                                                                                                             
+# 0r                                                                                                                                                                                                                                          
+# set -g pane-active-border-bg default                                                                                                                                                                                                        
+# set -g pane-active-boarder-fg colour208 
+
+#----------------------------------[Easier hotkey switches]------------------------------------------------------
 # use alt-arrow keys to switch panes
 bind -n M-Left select-pane -L
 bind -n M-Right select-pane -R
