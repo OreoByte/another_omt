@@ -49,7 +49,11 @@ set-option -g status-right-style default
 setw -g window-status-current-style fg=black,bg="#39ac73"
 
 # auto-change the tmux window by what program is open (uncommnet if you want it)
+# NOTE; ("kinda already on by default")
 #set -g automatic-rename on
+
+# disable tmux window name from auto changing to what's currently ("after window-name as been manually changed once")
+set-window-option -g allow-rename off
 
 # auto update window number when windows are removed (prevent random numbers)                                                                                                
 set-option -g renumber-windows on 
@@ -81,7 +85,7 @@ set -g status-left "#[fg="red,bold"]#(echo 'Try Harderer ')#[fg=green,bold]#S "
 
 #--------------------[Extra options for workflow]------------------------------
 # increase the total amount of lines that can be scrolled up in copy-mode
-set -g history-limit 5500
+set -g history-limit 10000
 
 # custom prefix "uncomment if you want it" (C "ctrl" // a "a-key")
 # set -g prefix C-a
