@@ -109,6 +109,9 @@ bind-key -T copy-mode y send -X copy-selection-and-cancel\; run "tmux save -|xcl
 # same thing but for mode-keys as vi
 #bind-key -T copy-mode-vi y send -X copy-selection-and-cancel\; run "tmux save -|xclip -i -sel clip >/dev/null 2>&1"
 
+# set the default shell of the tmux session to /bin/bash or other, thank xbufu ;'..;'
+# set-option -g default-shell /bin/bash
+
 # -------------------[load/set custom tmux plugins]--------------------------------------------------
 # NOTE; (must have direct path to plugin after downloading from github)
 
