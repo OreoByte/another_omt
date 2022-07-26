@@ -1,0 +1,8 @@
+# useful bashrc functions that are useful when doing simple cyber or CTF's
+# query scan all ports with rustscan bash function
+function rusty() { rustscan -a "$1" -r 1-65535; }
+# rusty <rhost-ip>
+
+# quickly format a full nmap scan tcp ports to be able to STDIN into a nmap script scan with all discovered ports
+function one_port() { cat "$1" | grep ^[0-9] | cut -d '/' -f1 | tr '\n' ',' | sed s/,$//; }
+# one_port tcpall.out | nmap -p - -sC -sV -Pn -v -oN script_scan.out
