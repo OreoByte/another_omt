@@ -1,8 +1,21 @@
+#--------------------------------------------------------------------------#
 # useful bashrc functions that are useful when doing simple cyber or CTF's
+#--------------------------------------------------------------------------#
+
+# quickly have all HTTP status codes to allow when http-dir fuzzing if you think one is being blocked by mistake
+alias status='echo -n "100,101,102,103,200,201,202,203,204,205,206,207,208,226,300,301,302,303,304,305,306,307,308,400,401,402,403,404,405,406,407,408,409,410,411,412,413,414,415,416,417,418,421,422,423,424,425,426,428,429,431,451,500,501,502,503,504,505,506,507,508,510,511"|xclip -sel clip'
+
 # query scan all ports with rustscan bash function
 function rusty() { rustscan -a "$1" -r 1-65535; }
 # rusty <rhost-ip>
 
 # quickly format a full nmap scan tcp ports to be able to STDIN into a nmap script scan with all discovered ports
 function one_port() { cat "$1" | grep ^[0-9] | cut -d '/' -f1 | tr '\n' ',' | sed s/,$//; }
-# one_port tcpall.out | nmap -p - -sC -sV -Pn -v -oN script_scan.out
+# one_port tcpall.out | nmap -p - -sC -sV -Pn -v -oN script_scan.out <rhost-ip>
+
+# reformat the rustscan output when nmap scan fails because the rhost is blocking icmp requests and nmap -Pn is not in use
+function two_port() { cat "$1" | sed -e 's/:/ /g' | awk '{print $3}' | cut -d '/' -f1 | tr '\n' ',' | sed s/,$//; }
+# two_port rustscan.out | nmap -p - -sC -sV -Pn -v -oN script_scan.out <rhost-ip>
+
+# alias for pwn college because I always forget...
+alias pwncol="ssh -i ~/.ssh/pwn_college hacker@dojo.pwn.college"
