@@ -26,6 +26,22 @@ alias pwncol="ssh -i ~/.ssh/pwn_college hacker@dojo.pwn.college"
 # whoogle local search engine start docker alias // https://github.com/benbusby/whoogle-search
 alias whoogle-start='docker run -p 5000:5000 -d benbusby/whoogle-search'
 
+# function for decode urlencoded data (thanks stackoverflow)
+# use the urlencode apt package to re-encode stuff // sudo apt install gridsite-clients
+function urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
+
+# docker container mount local directory
+function dockerbashhere() {
+        dirname=${PWD##*/}
+        #sudo docker run --rm -it --entrypoint=/bin/bash -v `pwd`:/${dirname} -w /${dirname} "$@"
+        docker run --rm -it --entrypoint=/bin/bash -v `pwd`:/${dirname} -w /${dirname} "$@"
+}
+function dockershhere() {
+        dirname=${PWD##*/}
+        #sudo docker run --rm -it --entrypoint=/bin/sh -v `pwd`:/${dirname} -w /${dirname} "$@"
+        docker run --rm -it --entrypoint=/bin/sh -v `pwd`:/${dirname} -w /${dirname} "$@"
+}
+
 # other random stuff that I don't want to retype all the time
 alias ps-server='sudo powershell-empire server'
 alias ps-client='sudo powershell-empire client'
